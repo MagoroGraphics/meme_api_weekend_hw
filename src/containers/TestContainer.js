@@ -2,7 +2,7 @@ import React from "react";
 import MemeTest from "../components/MemeTest";
 import MemeTestImage from "../components/MemeTestImage";
 
-const TestContainer = ({memes}) => {
+const TestContainer = ({memes, handleScore, userSelected}) => {
 
     //take a random array index and access the name and url from it
     //pass the url to MemeTestImage to display it
@@ -29,8 +29,6 @@ const TestContainer = ({memes}) => {
         counter++
     } 
 
-    
-
     let selectedImage = memes[selectedIndex]["url"]
     let selectedName = memes[selectedIndex]["name"]
 
@@ -44,7 +42,7 @@ const TestContainer = ({memes}) => {
                 <MemeTestImage meme={selectedImage}/>
             </div>
             <div>
-                {possibleAnswers.length > 0 ? <MemeTest correctAnswer={selectedName} possibleAnswers={possibleAnswers}/> : null}
+                {possibleAnswers.length > 0 ? <MemeTest correctAnswer={selectedName} possibleAnswers={possibleAnswers} handleScore={handleScore} userSelected={userSelected}/> : null}
             </div>
         </section>
     )

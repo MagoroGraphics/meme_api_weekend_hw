@@ -1,6 +1,7 @@
 .meme {
   width: auto;
   height: 500px;
+  max-width: 600px;
 }
 
 #memetest {
@@ -21,6 +22,8 @@ li {
   padding: 10px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+  
 }
 
 #test {
@@ -31,4 +34,23 @@ li {
   box-shadow: 5px 10px 8px grey;
   padding: 20px;
   border-radius: 10px;
+}
+
+.meme:hover{
+  background: rgb(146, 50, 159);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(213, 30, 115);
+  color: rgb(241, 227, 146);
+}
+
+#score {
+  text-align: center;
+}
+
+#title {
+  padding: 20px;
 }

@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import AnswerItem from "./AnswerItem";
 
-const MemeTest = ({correctAnswer, possibleAnswers}) => {
+const MemeTest = ({correctAnswer, possibleAnswers, handleScore, userSelected}) => {
 
     const [userSelection, setUserSelection] = useState()
     
@@ -39,11 +39,14 @@ const MemeTest = ({correctAnswer, possibleAnswers}) => {
             
             <section id="test">
             <h2>What is the name of this meme?</h2>
-            <ul>
-            {answers}
-            </ul>
+            
+            <form onsubmit={userSelected(target.value)}>
+                <ul>
+                    {answers}
+                </ul>
+             <button onClick={handleScore} id='submit'> Submit </button>
+            </form>
 
-            <button onClick={handleSubmitAnswer} id='submit'> Submit </button>
             </section>
             <section>
                 
