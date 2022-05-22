@@ -1,37 +1,26 @@
 import React,{useState} from "react";
 import AnswerItem from "./AnswerItem";
 
-const MemeTest = ({correctAnswer, possibleAnswers, handleScore, userSelected}) => {
+const MemeTest = ({possibleAnswers, handleScore, handleSubmit, setUserSubmission}) => {
 
-    const [userSelection, setUserSelection] = useState()
-    
 
-    const renderAnswers = () => {
+    const randomizeAnswers = () => {
         let randomizedAnswers = []
         let possibleAnswersCopy = [...possibleAnswers]
 
             while(possibleAnswersCopy.length > 0){
-                let index = 0
                 let randomIndex = Math.floor(Math.random() * possibleAnswersCopy.length)
                 let optionalAnswer = possibleAnswersCopy[randomIndex]
                 possibleAnswersCopy.splice(randomIndex,1)
-                randomizedAnswers.push(<AnswerItem optionalAnswer={optionalAnswer} key={index}/>)
-                index++
+                randomizedAnswers.push(<AnswerItem answer={optionalAnswer} key={optionalAnswer}/>)
+                
         }
         return (
             randomizedAnswers
         )
     }
 
-    const answers = renderAnswers()
-
-    let score = 0
-
-    const handleSubmitAnswer = () => {
-        setUserSelection(document.querySelector('input[name="meme_questions"]:checked').value)
-        correctAnswer === userSelection ? score + 1 : null
-
-    }
+    const answers = randomizeAnswers()
 
 
     return (
@@ -40,11 +29,11 @@ const MemeTest = ({correctAnswer, possibleAnswers, handleScore, userSelected}) =
             <section id="test">
             <h2>What is the name of this meme?</h2>
             
-            <form onsubmit={userSelected(target.value)}>
+            <form onSubmit={setUserSubmission}>
                 <ul>
                     {answers}
                 </ul>
-             <button onClick={handleScore} id='submit'> Submit </button>
+             <input type="submit" value="Submit"/> 
             </form>
 
             </section>

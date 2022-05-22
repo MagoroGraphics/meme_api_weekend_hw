@@ -2,7 +2,7 @@ import React from "react";
 import MemeTest from "../components/MemeTest";
 import MemeTestImage from "../components/MemeTestImage";
 
-const TestContainer = ({memes, handleScore, userSelected}) => {
+const TestContainer = ({memes, userSelection, setMultiChoice, setUserSubmission}) => {
 
     //take a random array index and access the name and url from it
     //pass the url to MemeTestImage to display it
@@ -18,31 +18,43 @@ const TestContainer = ({memes, handleScore, userSelected}) => {
 
     memesCopy.splice(selectedIndex, 1)
 
-    const wrongNames = memesCopy.map(meme => meme["name"])
+    const wrongMemeNames = memesCopy.map(meme => meme["name"])
 
     let possibleAnswers = []
 
     let counter = 0
     
     while(counter <= 3){
-        possibleAnswers.push(wrongNames[Math.floor(Math.random() * wrongNames.length)])
+        possibleAnswers.push(wrongMemeNames[Math.floor(Math.random() * wrongMemeNames.length)])
         counter++
     } 
 
-    let selectedImage = memes[selectedIndex]["url"]
-    let selectedName = memes[selectedIndex]["name"]
+    let displayedMemeImage = memes[selectedIndex]["url"]
+    let displayedMemeName = memes[selectedIndex]["name"]
 
-    possibleAnswers.push(selectedName)
+    possibleAnswers.push(displayedMemeName)
+
+    const handleSubmit = (submission) => {
+        submission.preventDefault()
+        console.log("This is User Submission: ", submission)
+        let score = 0
+        if (submission == displayedMemeName) {
+            score++
+        } else {
+            return score
+        } 
+        return score
+    }
 
     //take a set number (eg. 5) of other random index and pass the name to be set as wrong options in the questionnaire to MemeTest
 
     return(
         <section id="memetest">
             <div class="imagebox">
-                <MemeTestImage meme={selectedImage}/>
+                <MemeTestImage meme={displayedMemeImage}/>
             </div>
             <div>
-                {possibleAnswers.length > 0 ? <MemeTest correctAnswer={selectedName} possibleAnswers={possibleAnswers} handleScore={handleScore} userSelected={userSelected}/> : null}
+                <MemeTest correctAnswer={displayedMemeName} possibleAnswers={possibleAnswers}  userSelection={userSelection} setMultiChoice={setMultiChoice} handleSubmit={handleSubmit} setUserSubmission={setUserSubmission}/>
             </div>
         </section>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 
-const AnswerItem = ({optionalAnswer}) => {
+const AnswerItem = ({answer, key}) => {
 
     const handleInputSelection = () => {
 
@@ -8,8 +8,8 @@ const AnswerItem = ({optionalAnswer}) => {
 
     return(
         <li>
-            <input type="radio" id={optionalAnswer} name="meme_questions" value={optionalAnswer}/>
-                <label for={optionalAnswer}>{optionalAnswer}</label>
+            <input type="radio" id={key} name="meme_questions" value={answer} checked={answer}/>
+                <label for={answer}>{answer}</label>
         </li>
     )
 }

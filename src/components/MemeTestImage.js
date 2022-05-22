@@ -2,7 +2,6 @@ import React from "react";
 
 const MemeTestImage = ({meme}) => {
 
-    
 
     return (
         <section>
