@@ -3,6 +3,8 @@ import AnswerItem from "./AnswerItem";
 
 const MemeTest = ({possibleAnswers, handleScore, handleSubmit, setUserSubmission}) => {
 
+    const [randomAnswers, setRandomAnswers] = useState([])
+
 
     const randomizeAnswers = () => {
         let randomizedAnswers = []
@@ -15,13 +17,10 @@ const MemeTest = ({possibleAnswers, handleScore, handleSubmit, setUserSubmission
                 randomizedAnswers.push(<AnswerItem answer={optionalAnswer} key={optionalAnswer}/>)
                 
         }
-        return (
-            randomizedAnswers
-        )
+       return randomAnswers
     }
 
-    const answers = randomizeAnswers()
-
+    setRandomAnswers(randomizeAnswers)
 
     return (
         <div>
@@ -31,7 +30,7 @@ const MemeTest = ({possibleAnswers, handleScore, handleSubmit, setUserSubmission
             
             <form onSubmit={setUserSubmission}>
                 <ul>
-                    {answers}
+                    {randomAnswers}
                 </ul>
              <input type="submit" value="Submit"/> 
             </form>

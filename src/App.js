@@ -5,15 +5,13 @@ import Gallery from './components/Gallery';
 import ErrorPage from './components/ErrorPage';
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import styled from 'styled-components';
-import Modal from 'react-modal/lib/components/Modal';
 
 function App() {
 
   const [memes, setMemesList] = useState([])
-  const [fullQuizz, setFullQuiz] = useState([])
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [user, setUser] = useState("")
-
+  const [userName, setUserName] = useState('')
+  const [currentFiveMemes, setCurrentFiveMemes] = useState([])
+  const [currentCorrectAnswer, setCurrentCorrectAnswer] = useState({test:"test"})
 
   useEffect(() => {
       
@@ -29,8 +27,27 @@ function App() {
   }
 
 
-  
 
+  const getFiveRandomMemes = () => {
+
+    let randomMemeList = []
+
+    for(let i = 0; i < 5; i++){
+      let randomIndex = Math.floor(Math.random() * memes.length)
+      randomMemeList.push(memes[randomIndex])
+
+    }
+    setCurrentFiveMemes(randomMemeList)
+
+  }
+
+  const getCurrentCorrectAnswer = () => {
+    const correctAnswer = {};
+    let randomIndex = Math.floor(Math.random() * currentFiveMemes.length)
+    correctAnswer = currentFiveMemes[randomIndex]
+    setCurrentCorrectAnswer(correctAnswer)
+
+  }
 /* 
 Get 10 sets of 5 random meme objects in an array and place them in fullQuizz state
 
@@ -39,15 +56,6 @@ From each set of the fullQuizz, get 1 correctAnswer meme
 Randomise and display each set of fullQuizz.name in radio inputs making sure the correct answer is included
 
 */
-
-
-
-const selectMemeIndex = () => {
-  return Math.floor(Math.random() * memes.length);
-}
-
-let selectedIndex = selectMemeIndex()
-
 
 
 const NavBar = styled.div`
@@ -63,43 +71,40 @@ const StyledLink = styled(Link)`
   padding: 20px;
 
 `
-const handleNameSubmit = (e) => {
-  e.preventDefault()
-  setIsModalOpen(!isModalOpen)
-}
-
-const handleNameChange = (e) => {
-  e.preventDefault()
-  setUser(e.target.value)
-}
 
   return (
-    
-    <Router>
-      <NavBar>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/gallery">Gallery</StyledLink>
-      </NavBar>
+    <>
+      <button onClick={() => {getFiveRandomMemes()}}>random questions</button>
+      <button onClick={()=> {getCurrentCorrectAnswer()}}>Get correct answer</button>
+      <Router>
+        <NavBar>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/gallery">Gallery</StyledLink>
+        </NavBar>
+          
+      
         
-     
-      
-        <Routes>
-          <Route 
-            path="/" 
-            element={memes.length > 0 ? <MemeTestBox memes={memes} 
-            isModalOpen={isModalOpen} 
-            setIsModalOpen={setIsModalOpen} /> : null}
-            user = {user}
-            handleNameChange={handleNameChange}
-            handleNameSubmit={handleNameSubmit}
-          />
-          <Route path="/gallery" element={memes.length > 0 ? <Gallery memes={memes}/>  : null}/>
-          <Route path="*" element={<ErrorPage/>}/>
-        </Routes>
-      
-      
-    </Router>
-    
+          <Routes>
+            <Route 
+              path="/" 
+              element={memes.length > 0 ? <MemeTestBox 
+              memes={memes} 
+              setUserName = {setUserName}
+            /> : null}
+            />
+            <Route 
+              path="/gallery" 
+              element={memes.length > 0 ? <Gallery memes={memes}
+            />  : null}/>
+            <Route 
+              path="*" 
+              element={<ErrorPage/>}
+            />
+          </Routes>
+        
+        
+      </Router>
+    </>
   );
 }
 
