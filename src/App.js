@@ -42,13 +42,10 @@ function App() {
   }
 
   const getCurrentCorrectAnswer = () => {
-    console.log("getCurrentCorrectAnswer clicked")
     let correctAnswer = {};
     let randomIndex = Math.floor(Math.random() * currentFiveMemes.length)
     correctAnswer = currentFiveMemes[randomIndex]
-    console.log({correctAnswer})
     setCurrentCorrectAnswer(correctAnswer)
-
   }
 /* 
 Get 10 sets of 5 random meme objects in an array and place them in fullQuizz state
@@ -92,6 +89,8 @@ const StyledLink = styled(Link)`
               element={memes.length > 0 ? <MemeTestBox 
               memes={memes} 
               setUserName = {setUserName}
+              currentCorrectAnswer = {currentCorrectAnswer}
+              getCurrentCorrectAnswer = {getCurrentCorrectAnswer}
             /> : null}
             />
             <Route 

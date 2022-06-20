@@ -3,10 +3,15 @@ import TestContainer from "./TestContainer";
 import StartScreen from '../components/StartScreen.js'
 
 
-const MemeTestBox = ({memes, setUserName}) => {
+const MemeTestBox = ({
+    memes, 
+    setUserName, 
+    currentCorrectAnswer,
+    getCurrentCorrectAnswer
+}) => {
 
     const [score, setScore] = useState(0)
-    const [userSelection, setUserSelection] = useState('')
+    const [userChoice, setUserChoice] = useState('')
     const [multiChoiceAnswers, setMultiChoiceAnswers] = useState([])
     const [usersubmission, setUserSubmission] = useState("")
     const [randomizedQuizz, setRandomizedQuizz] = useState([])
@@ -31,7 +36,7 @@ const MemeTestBox = ({memes, setUserName}) => {
                 />}
                 {quizzState === "Quizz" && <TestContainer 
                 memes={memes} 
-                userSelection={setUserSelection} 
+                userChoice={setUserChoice} 
                 setMultiChoice={setMultiChoiceAnswers} 
                 setUserSubmission={setUserSubmission}
                 />}
