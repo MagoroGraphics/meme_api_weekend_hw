@@ -11,7 +11,7 @@ function App() {
   const [memes, setMemesList] = useState([])
   const [userName, setUserName] = useState('')
   const [currentFiveMemes, setCurrentFiveMemes] = useState([])
-  const [currentCorrectAnswer, setCurrentCorrectAnswer] = useState({test:"test"})
+  const [currentCorrectAnswer, setCurrentCorrectAnswer] = useState({})
 
   useEffect(() => {
       
@@ -42,9 +42,11 @@ function App() {
   }
 
   const getCurrentCorrectAnswer = () => {
-    const correctAnswer = {};
+    console.log("getCurrentCorrectAnswer clicked")
+    let correctAnswer = {};
     let randomIndex = Math.floor(Math.random() * currentFiveMemes.length)
     correctAnswer = currentFiveMemes[randomIndex]
+    console.log({correctAnswer})
     setCurrentCorrectAnswer(correctAnswer)
 
   }
@@ -67,7 +69,7 @@ const NavBar = styled.div`
 const StyledLink = styled(Link)`
   color: rgb(241, 227, 146);
   font-weight: 600;
-  font-size: 2em;
+  font-size: 1em;
   padding: 20px;
 
 `
