@@ -9,7 +9,9 @@ const MemeTestBox = ({
     setUserName,
     currentFiveMemes, 
     currentCorrectAnswer,
-    getCurrentCorrectAnswer
+    getCurrentCorrectAnswer,
+    getFiveRandomMemes
+    
 }) => {
 
     const [score, setScore] = useState(0)
@@ -35,7 +37,9 @@ const MemeTestBox = ({
                 {quizzState === "Start Screen" && <StartScreen 
                 setQuizzState = {setQuizzState}
                 setUserName = {setUserName}
+                getCurrentCorrectAnswer = {getCurrentCorrectAnswer}
                 />}
+
                 {quizzState === "Quizz" && <TestContainer 
                 memes={memes}
                 currentFiveMemes = {currentFiveMemes} 
@@ -43,6 +47,8 @@ const MemeTestBox = ({
                 userChoice={setUserChoice} 
                 setMultiChoice={setMultiChoiceAnswers} 
                 setUserSubmission={setUserSubmission}
+                getFiveRandomMemes = {getFiveRandomMemes}
+                getCurrentCorrectAnswer = {getCurrentCorrectAnswer}
                 class="memetest"
                 />}
             </section>

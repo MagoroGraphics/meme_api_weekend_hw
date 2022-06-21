@@ -1,7 +1,7 @@
 import React from "react";
 import GalleryItem from "./GalleryItem";
 
-const Gallery = ({memes}) => {
+const Gallery = ({memes, userName}) => {
 
 const allMemes = memes.map((meme, index) => {
     return <GalleryItem key= {index} memeImg={meme.url} memeName={meme.name} />

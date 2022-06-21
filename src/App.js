@@ -36,7 +36,7 @@ function App() {
   useEffect(()=> {
 
     getFiveRandomMemes()
-    getCurrentCorrectAnswer()
+    // getCurrentCorrectAnswer()
 
   }, [memes])
   
@@ -73,8 +73,8 @@ function App() {
 
   return (
     <>
-      <button onClick={() => {getFiveRandomMemes()}}>random questions</button>
-      <button onClick={()=> {getCurrentCorrectAnswer()}}>Get correct answer</button>
+      {/* <button onClick={() => {getFiveRandomMemes()}}>random questions</button>
+      <button onClick={()=> {getCurrentCorrectAnswer()}}>Get correct answer</button> */}
       <Router>
         <NavBar>
           <StyledLink to="/">Home</StyledLink>
@@ -93,11 +93,14 @@ function App() {
               currentFiveMemes = {currentFiveMemes}
               currentCorrectAnswer = {currentCorrectAnswer}
               getCurrentCorrectAnswer = {getCurrentCorrectAnswer}
+              getFiveRandomMemes = {getFiveRandomMemes}
             /> : null}
             />
             <Route 
               path="/gallery" 
-              element={memes.length > 0 ? <Gallery memes={memes}
+              element={memes.length > 0 ? <Gallery 
+                memes={memes}
+                userName = {userName}
             />  : null}/>
             <Route 
               path="*" 

@@ -2,16 +2,32 @@ import React from "react";
 import MemeTest from "../components/MemeTest";
 import MemeTestImage from "../components/MemeTestImage";
 
-const TestContainer = ({memes, userSelection, currentFiveMemes, currentCorrectAnswer, setMultiChoice, setUserSubmission}) => {
+const TestContainer = ({
+    memes, 
+    userSelection, 
+    currentFiveMemes, 
+    currentCorrectAnswer, 
+    setMultiChoice, 
+    setUserSubmission,
+    getFiveRandomMemes,
+    getCurrentCorrectAnswer
+}) => {
 
     const multipleChoice = currentFiveMemes.map((meme, index)=>{
-        return (<li> 
-                    <input type="radio" name="quizz" key={index}/>
+        return (<li key={index}> 
+                    <input type="radio" name="quizz" />
                     <label>{meme["name"]}</label>
                 </li>
         )
         
     })
+
+    const handleOnClickSubmit = (e) => {
+        e.preventDefault()
+        getFiveRandomMemes()
+        getCurrentCorrectAnswer()
+
+    }
 
 
     // const selectMemeIndex = () => {
@@ -54,10 +70,10 @@ const TestContainer = ({memes, userSelection, currentFiveMemes, currentCorrectAn
 
     return(
         <section id="memetest">
-           <h2>Meme test Container</h2>
            <img src={currentCorrectAnswer["url"]} alt="meme" class="meme"></img>
            <form>
                 {multipleChoice}
+                <button type="submit" onClick={handleOnClickSubmit}>Submit</button>
            </form>
         </section>
     )
