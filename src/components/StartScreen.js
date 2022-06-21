@@ -1,9 +1,14 @@
 import React from "react";
 
-const StartScreen = ({setQuizzState, setUserName}) => {
+const StartScreen = ({setQuizzState, setUserName, getCurrentCorrectAnswer}) => {
 
     const handleNameOnChange = (e) => {
         setUserName(e.target.value)
+    }
+
+    const handleQuizzStart = () => {
+        setQuizzState("Quizz")
+        getCurrentCorrectAnswer()
     }
 
     return (
@@ -17,7 +22,7 @@ const StartScreen = ({setQuizzState, setUserName}) => {
                 />
             </form>
             <button 
-            onClick={()=>{setQuizzState("Quizz")}} 
+            onClick={handleQuizzStart} 
             >
                 Start Quizz
             </button>
