@@ -5,7 +5,9 @@ import StartScreen from '../components/StartScreen.js'
 
 const MemeTestBox = ({
     memes, 
-    setUserName, 
+    userName,
+    setUserName,
+    currentFiveMemes, 
     currentCorrectAnswer,
     getCurrentCorrectAnswer
 }) => {
@@ -23,7 +25,7 @@ const MemeTestBox = ({
             <header>
                 <section id="title">
                     <h1>MEME KNOWLEDGE TEST</h1>
-                    <h2>How well do you know your memes?</h2>
+                    <h2>Hi {userName}! How well do you know your memes?</h2>
                 </section>
                 <section>
                     <h2>Score: {score}</h2>
@@ -35,10 +37,13 @@ const MemeTestBox = ({
                 setUserName = {setUserName}
                 />}
                 {quizzState === "Quizz" && <TestContainer 
-                memes={memes} 
+                memes={memes}
+                currentFiveMemes = {currentFiveMemes} 
+                currentCorrectAnswer = {currentCorrectAnswer}
                 userChoice={setUserChoice} 
                 setMultiChoice={setMultiChoiceAnswers} 
                 setUserSubmission={setUserSubmission}
+                class="memetest"
                 />}
             </section>
         </main>

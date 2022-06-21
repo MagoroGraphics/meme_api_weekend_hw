@@ -6,6 +6,20 @@ import ErrorPage from './components/ErrorPage';
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import styled from 'styled-components';
 
+
+const NavBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(213, 30, 115);
+  
+`
+const StyledLink = styled(Link)`
+  color: rgb(241, 227, 146);
+  font-weight: 600;
+  font-size: 1em;
+  padding: 20px;
+`
+
 function App() {
 
   const [memes, setMemesList] = useState([])
@@ -47,29 +61,8 @@ function App() {
     correctAnswer = currentFiveMemes[randomIndex]
     setCurrentCorrectAnswer(correctAnswer)
   }
-/* 
-Get 10 sets of 5 random meme objects in an array and place them in fullQuizz state
-
-From each set of the fullQuizz, get 1 correctAnswer meme
-
-Randomise and display each set of fullQuizz.name in radio inputs making sure the correct answer is included
-
-*/
 
 
-const NavBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(213, 30, 115);
-  
-`
-const StyledLink = styled(Link)`
-  color: rgb(241, 227, 146);
-  font-weight: 600;
-  font-size: 1em;
-  padding: 20px;
-
-`
 
   return (
     <>
@@ -88,7 +81,9 @@ const StyledLink = styled(Link)`
               path="/" 
               element={memes.length > 0 ? <MemeTestBox 
               memes={memes} 
+              userName = {userName}
               setUserName = {setUserName}
+              currentFiveMemes = {currentFiveMemes}
               currentCorrectAnswer = {currentCorrectAnswer}
               getCurrentCorrectAnswer = {getCurrentCorrectAnswer}
             /> : null}
