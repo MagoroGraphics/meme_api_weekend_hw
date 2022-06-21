@@ -32,6 +32,13 @@ function App() {
     loadMemes()
 
   }, [])
+
+  useEffect(()=> {
+
+    getFiveRandomMemes()
+    getCurrentCorrectAnswer()
+
+  }, [memes])
   
    const loadMemes =  () => {
       fetch("https://api.imgflip.com/get_memes?fbclid=IwAR1mOSdGl4vxWygsq0-1_sZFj1Cek5zIK5pfGrqSUZATGILpZ_U-ahNsEhI")
