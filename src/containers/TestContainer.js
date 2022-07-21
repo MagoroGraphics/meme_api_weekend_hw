@@ -1,6 +1,41 @@
 import React from "react";
 import MemeTest from "../components/MemeTest";
 import MemeTestImage from "../components/MemeTestImage";
+import styled from 'styled-components';
+
+const TestWrapper = styled.section`
+display: flex;
+flex-direction: row;
+margin: auto;
+`
+
+const MemeImage = styled.img`
+    padding:2vh;
+    border-radius: 3vh;
+`
+
+const FormWrapper = styled.div`
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
+const StyledButton = styled.button`
+    background-color: yellow;
+    font-weight: bold;
+    border-radius: 2vh;
+    border-style: none;
+    font-size: 2vh;
+    padding: 2vh;
+    margin: 3vh;
+    -webkit-box-shadow: 2.5px 4.5px 14.5px -1.5px #898989;
+    -moz-box-shadow: 2.5px 4.5px 14.5px -1.5px #898989;
+    box-shadow: 2.5px 4.5px 14.5px -1.5px #898989;
+    &:hover{
+        background-color: magenta;
+    }
+`
 
 const TestContainer = ({
     memes, 
@@ -69,13 +104,15 @@ const TestContainer = ({
     // }
 
     return(
-        <section id="memetest">
-           <img src={currentCorrectAnswer["url"]} alt="meme" class="meme"></img>
-           <form>
-                {multipleChoice}
-                <button type="submit" onClick={handleOnClickSubmit}>Submit</button>
-           </form>
-        </section>
+        <TestWrapper id="memetest">
+           <MemeImage src={currentCorrectAnswer["url"]} alt="meme" class="meme"/>
+        <FormWrapper>
+            <form>
+                    {multipleChoice}
+                    <StyledButton type="submit" onClick={handleOnClickSubmit}>Submit</StyledButton>
+            </form>
+        </FormWrapper>
+        </TestWrapper>
     )
 }
 
