@@ -6,7 +6,7 @@ import ErrorPage from './components/ErrorPage';
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-
+//#region Styled Components
 const NavBar = styled.div`
   display: flex;
   flex-direction: row;
@@ -19,6 +19,7 @@ const StyledLink = styled(Link)`
   font-size: 1em;
   padding: 20px;
 `
+//#endregion
 
 function App() {
 
