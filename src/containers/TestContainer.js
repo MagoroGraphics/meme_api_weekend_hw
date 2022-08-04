@@ -14,6 +14,8 @@ margin: auto;
 const MemeImage = styled.img`
     padding:2vh;
     border-radius: 3vh;
+    max-width: 5vw;
+    max-height: 5vh;
 `
 
 const FormWrapper = styled.div`
@@ -51,7 +53,8 @@ const TestContainer = ({
     getCurrentCorrectAnswer,
     fullQuiz,
     questionNum,
-    setQuizzState
+    setQuizzState,
+    setQuestionNum
 }) => {
 
     const multipleChoice = currentFiveMemes.map((meme, index)=>{
@@ -63,9 +66,15 @@ const TestContainer = ({
         
     })
 
+    const newMultipleChoice = fullQuiz[questionNum].map((meme, index) => {
+        return (
+            <li>{meme["name"]}</li>
+        )
+    })
+
     const handleOnClickSubmit = (e) => {
         e.preventDefault()
-        //questionNum <= 9 ? setQuestionNum(questionNum + 1) : setQuizzState("End Screen")
+        questionNum < 9 ? setQuestionNum(questionNum + 1) : setQuizzState("End Screen")
         getFiveRandomMemes()
         getCurrentCorrectAnswer()
 
@@ -116,8 +125,9 @@ const TestContainer = ({
         <FormWrapper>
             <form>
                     {multipleChoice}
-                    <StyledButton type="submit" onClick={handleOnClickSubmit}>Submit</StyledButton>
+                    <StyledButton type="submit" onClick={handleOnClickSubmit}>Next</StyledButton>
             </form>
+            {newMultipleChoice}
         </FormWrapper>
         </TestWrapper>
     )

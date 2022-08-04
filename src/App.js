@@ -103,6 +103,7 @@ function App() {
                   getFiveRandomMemes={getFiveRandomMemes}
                   fullQuiz = {fullQuiz}
                   questionNum = {questionNum}
+                  setQuestionNum = {setQuestionNum}
                 />
               ) : null
             }

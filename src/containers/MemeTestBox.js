@@ -13,7 +13,8 @@ const MemeTestBox = ({
     getCurrentCorrectAnswer,
     getFiveRandomMemes,
     fullQuiz,
-    questionNum
+    questionNum,
+    setQuestionNum
     
 }) => {
 
@@ -55,11 +56,12 @@ const MemeTestBox = ({
                 fullQuiz = {fullQuiz}
                 questionNum = {questionNum}
                 setQuizzState = {setQuizzState}
+                setQuestionNum = {setQuestionNum}
                 class="memetest"
                 />}
 
                 {quizzState === "End Screen" && <EndScreen/>}
-                
+
             </section>
         </main>
     )
