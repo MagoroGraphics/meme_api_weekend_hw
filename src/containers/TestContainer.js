@@ -54,7 +54,8 @@ const TestContainer = ({
     fullQuiz,
     questionNum,
     setQuizzState,
-    setQuestionNum
+    setQuestionNum,
+    allCorrectAnswers
 }) => {
 
    
@@ -70,53 +71,16 @@ const TestContainer = ({
     const handleOnClickSubmit = (e) => {
         e.preventDefault()
         questionNum < 9 ? setQuestionNum(questionNum + 1) : setQuizzState("End Screen")
-        // getFiveRandomMemes()
         getCurrentCorrectAnswer()
 
     }
 
 
-    // const selectMemeIndex = () => {
-    //     return Math.floor(Math.random() * memes.length);
-    // }
-
-
-    // let selectedIndex = selectMemeIndex()
-    // let memesCopy = [...memes]
-
-    // memesCopy.splice(selectedIndex, 1)
-
-    // const wrongMemeNames = memesCopy.map(meme => meme["name"])
-
-    // let possibleAnswers = []
-
-    // let counter = 0
-    
-    // while(counter <= 3){
-    //     possibleAnswers.push(wrongMemeNames[Math.floor(Math.random() * wrongMemeNames.length)])
-    //     counter++
-    // } 
-
-    // let displayedMemeImage = memes[selectedIndex]["url"]
-    // let displayedMemeName = memes[selectedIndex]["name"]
-
-    // possibleAnswers.push(displayedMemeName)
-
-    // const handleSubmit = (submission) => {
-    //     submission.preventDefault()
-    //     console.log("This is User Submission: ", submission)
-    //     let score = 0
-    //     if (submission == displayedMemeName) {
-    //         score++
-    //     } else {
-    //         return score
-    //     } 
-    //     return score
-    // }
+   
 
     return(
         <TestWrapper id="memetest">
-           <MemeImage src={currentCorrectAnswer["url"]} alt="meme" class="meme"/>
+           <MemeImage src={allCorrectAnswers[questionNum]["url"]} alt="meme"/>
         <FormWrapper>
             <form>
                 {multipleChoice}

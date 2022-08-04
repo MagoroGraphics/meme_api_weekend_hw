@@ -23,7 +23,6 @@ const StyledLink = styled(Link)`
 function App() {
   const [memes, setMemesList] = useState([]);
   const [userName, setUserName] = useState("");
-  // const [currentFiveMemes, setCurrentFiveMemes] = useState([]);
   const [fullQuiz, setFullQuiz] = useState([]);
   const [currentCorrectAnswer, setCurrentCorrectAnswer] = useState({});
   const [questionNum, setQuestionNum] = useState(0);
@@ -34,7 +33,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // getFiveRandomMemes();
     getFullQuiz()
   }, [memes]);
 
@@ -47,15 +45,6 @@ function App() {
       .catch((error) => console.error);
   };
 
-  // const getFiveRandomMemes = () => {
-  //   let randomMemeList = [];
-
-  //   for (let i = 0; i < 5; i++) {
-  //     let randomIndex = Math.floor(Math.random() * memes.length);
-  //     randomMemeList.push(memes[randomIndex]);
-  //   }
-  //   setCurrentFiveMemes(randomMemeList);
-  // };
 
   const getFullQuiz = () => {
     let allQuestions = [];
@@ -102,8 +91,7 @@ function App() {
 
   return (
     <>
-      {/* <button onClick={() => {getFiveRandomMemes()}}>random questions</button>
-      <button onClick={()=> {getCurrentCorrectAnswer()}}>Get correct answer</button> */}
+    
       <Router>
         <NavBar>
           <StyledLink to="/">Home</StyledLink>
@@ -127,6 +115,7 @@ function App() {
                   questionNum={questionNum}
                   setQuestionNum={setQuestionNum}
                   getAllCorrectAnswers = {getAllCorrectAnswers}
+                  allCorrectAnswers= {allCorrectAnswers}
                 />
               ) : null
             }

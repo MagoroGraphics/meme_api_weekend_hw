@@ -15,7 +15,8 @@ const MemeTestBox = ({
     fullQuiz,
     questionNum,
     setQuestionNum,
-    getAllCorrectAnswers
+    getAllCorrectAnswers,
+    allCorrectAnswers
     
 }) => {
 
@@ -60,6 +61,7 @@ const MemeTestBox = ({
                 setQuizzState = {setQuizzState}
                 setQuestionNum = {setQuestionNum}
                 getAllCorrectAnswers = {getAllCorrectAnswers}
+                allCorrectAnswers = {allCorrectAnswers}
                 />}
 
                 {quizzState === "End Screen" && <EndScreen
