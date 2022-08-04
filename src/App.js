@@ -105,10 +105,8 @@ function App() {
             element={
               memes.length > 0 ? (
                 <MemeTestBox
-                  memes={memes}
                   userName={userName}
                   setUserName={setUserName}
-                  currentCorrectAnswer={currentCorrectAnswer}
                   getCurrentCorrectAnswer={getCurrentCorrectAnswer}
                   fullQuiz={fullQuiz}
                   questionNum={questionNum}

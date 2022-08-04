@@ -29,14 +29,43 @@ const ButtonWrapper = styled.div`
   padding: 5vh;
 `;
 
+const StyledTextBox = styled.input`
+  border-radius: 1vh;
+  border-style: none;
+  background-color: azure;
+  width: 10vw;
+  height: 3vh;
+  padding: 1vh;
+`;
+
+const MainStartScreenWrapper = styled.div`
+width: 100vw;
+height:100vh;
+  background: radial-gradient(
+        circle,
+        transparent 20%,
+        #ffa2ce 20%,
+        #ffa2ce 80%,
+        transparent 80%,
+        transparent
+      )
+      0% 0% / 64px 64px,
+    radial-gradient(
+        circle,
+        transparent 20%,
+        #ffa2ce 20%,
+        #ffa2ce 80%,
+        transparent 80%,
+        transparent
+      )
+      32px 32px / 64px 64px,
+    linear-gradient(#ffca47 7px, transparent 7px) 0px -3.5px / 32px 32px,
+    linear-gradient(90deg, #ffca47 7px, #ffa2ce 7px) -3.5px 0px / 32px 32px #ffa2ce;
+  background-color: #ffa2ce;
+`;
 //#endregion
 
-const StartScreen = ({
-  setQuizzState,
-  setUserName,
-  getCurrentCorrectAnswer,
-  getAllCorrectAnswers,
-}) => {
+const StartScreen = ({ setQuizzState, setUserName, getAllCorrectAnswers }) => {
   const handleNameOnChange = (e) => {
     setUserName(e.target.value);
   };
@@ -47,11 +76,11 @@ const StartScreen = ({
   };
 
   return (
-    <div>
+    <MainStartScreenWrapper>
       <StyledFormWrapper>
         <h3>What's your name?</h3>
         <form>
-          <input
+          <StyledTextBox
             type="text"
             onChange={handleNameOnChange}
             placeholder="Your name here"
@@ -61,7 +90,7 @@ const StartScreen = ({
           <StyledButton onClick={handleQuizzStart}>Start Quizz</StyledButton>
         </ButtonWrapper>
       </StyledFormWrapper>
-    </div>
+    </MainStartScreenWrapper>
   );
 };
 

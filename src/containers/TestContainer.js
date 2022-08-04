@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import MemeTest from "../components/MemeTest";
-import MemeTestImage from "../components/MemeTestImage";
 import styled from "styled-components";
 
 //#region Styled Components
@@ -8,6 +6,7 @@ const TestWrapper = styled.section`
   display: flex;
   flex-direction: row;
   margin: auto;
+  justify-content: center;
 `;
 
 const MemeImage = styled.img`
@@ -38,16 +37,17 @@ const StyledButton = styled.button`
   &:hover {
     background-color: magenta;
   }
+  cursor: pointer;
 `;
+
+const MemeImgWrapper = styled.div`
+display: flex;
+justify-content: center;
+width: 20vw;
+`
 //#endregion
 
 const TestContainer = ({
-  memes,
-  currentFiveMemes,
-  currentCorrectAnswer,
-  setMultiChoice,
-  setUserSubmission,
-  getFiveRandomMemes,
   getCurrentCorrectAnswer,
   fullQuiz,
   questionNum,
@@ -94,8 +94,11 @@ const TestContainer = ({
 
   return (
     <TestWrapper id="memetest">
+        <MemeImgWrapper>
       <MemeImage src={allCorrectAnswers[questionNum]["url"]} alt="meme" />
+      </MemeImgWrapper>
       <FormWrapper>
+        <h3>What's the name of this meme?</h3>
         <form>
           {multipleChoice}
           <StyledButton type="submit" onClick={handleOnClickSubmit}>
