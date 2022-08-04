@@ -48,23 +48,16 @@ function App() {
   const getFiveRandomMemes = () => {
     let randomMemeList = [];
 
-    // for (let count = 10; count < 10; count++) {
     for (let i = 0; i < 5; i++) {
       let randomIndex = Math.floor(Math.random() * memes.length);
       randomMemeList.push(memes[randomIndex]);
     }
     setCurrentFiveMemes(randomMemeList);
-    //   console.log("for loop ran")
-    //   allQuestions.push(randomMemeList);
-    //   randomMemeList=[]
-    // }
-    // setFullQuiz(allQuestions);
-    // console.log("getFiveRandomMemes ran")
   };
 
   const getFullQuiz = () => {
     let allQuestions = [];
-    
+
     for (let i = 0; i < 10; i++) {
       let randomMemeList = [];
       for (let i = 0; i < 5; i++) {
@@ -72,12 +65,9 @@ function App() {
         randomMemeList.push(memes[randomIndex]);
       }
       allQuestions.push(randomMemeList);
-      setFullQuiz(allQuestions)
-
-      console.log("getFullQuiz working inside loop round: ", i);
+      setFullQuiz(allQuestions);
     }
 
-    // console.log("getFullQuiz working outside loop ")
     console.log({ allQuestions });
   };
 
