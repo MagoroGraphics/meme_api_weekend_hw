@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import TestContainer from "./TestContainer";
 import StartScreen from '../components/StartScreen.js'
+import EndScreen from "../components/EndScreen";
 
 
 const MemeTestBox = ({
@@ -10,7 +11,9 @@ const MemeTestBox = ({
     currentFiveMemes, 
     currentCorrectAnswer,
     getCurrentCorrectAnswer,
-    getFiveRandomMemes
+    getFiveRandomMemes,
+    fullQuiz,
+    questionNum
     
 }) => {
 
@@ -49,8 +52,14 @@ const MemeTestBox = ({
                 setUserSubmission={setUserSubmission}
                 getFiveRandomMemes = {getFiveRandomMemes}
                 getCurrentCorrectAnswer = {getCurrentCorrectAnswer}
+                fullQuiz = {fullQuiz}
+                questionNum = {questionNum}
+                setQuizzState = {setQuizzState}
                 class="memetest"
                 />}
+
+                {quizzState === "End Screen" && <EndScreen/>}
+                
             </section>
         </main>
     )

@@ -3,6 +3,8 @@ import MemeTest from "../components/MemeTest";
 import MemeTestImage from "../components/MemeTestImage";
 import styled from 'styled-components';
 
+
+//#region Styled Components
 const TestWrapper = styled.section`
 display: flex;
 flex-direction: row;
@@ -36,6 +38,7 @@ const StyledButton = styled.button`
         background-color: magenta;
     }
 `
+//#endregion
 
 const TestContainer = ({
     memes, 
@@ -45,7 +48,10 @@ const TestContainer = ({
     setMultiChoice, 
     setUserSubmission,
     getFiveRandomMemes,
-    getCurrentCorrectAnswer
+    getCurrentCorrectAnswer,
+    fullQuiz,
+    questionNum,
+    setQuizzState
 }) => {
 
     const multipleChoice = currentFiveMemes.map((meme, index)=>{
@@ -59,6 +65,7 @@ const TestContainer = ({
 
     const handleOnClickSubmit = (e) => {
         e.preventDefault()
+        //questionNum <= 9 ? setQuestionNum(questionNum + 1) : setQuizzState("End Screen")
         getFiveRandomMemes()
         getCurrentCorrectAnswer()
 
