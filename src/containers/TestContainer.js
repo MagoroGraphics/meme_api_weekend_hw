@@ -14,8 +14,8 @@ margin: auto;
 const MemeImage = styled.img`
     padding:2vh;
     border-radius: 3vh;
-    max-width: 5vw;
-    max-height: 5vh;
+    max-width: 20vw;
+    max-height: 20vh;
 `
 
 const FormWrapper = styled.div`
@@ -57,25 +57,20 @@ const TestContainer = ({
     setQuestionNum
 }) => {
 
-    const multipleChoice = currentFiveMemes.map((meme, index)=>{
-        return (<li key={index}> 
-                    <input type="radio" name="quizz" />
-                    <label>{meme["name"]}</label>
-                </li>
-        )
-        
-    })
+   
 
-    const newMultipleChoice = fullQuiz[questionNum].map((meme, index) => {
-        return (
-            <li>{meme["name"]}</li>
-        )
+    const multipleChoice = fullQuiz[questionNum].map((meme, index) => {
+        return (<li key={index}> 
+            <input type="radio" name="quizz" />
+            <label>{meme["name"]}</label>
+        </li>
+)
     })
 
     const handleOnClickSubmit = (e) => {
         e.preventDefault()
         questionNum < 9 ? setQuestionNum(questionNum + 1) : setQuizzState("End Screen")
-        getFiveRandomMemes()
+        // getFiveRandomMemes()
         getCurrentCorrectAnswer()
 
     }
@@ -124,10 +119,10 @@ const TestContainer = ({
            <MemeImage src={currentCorrectAnswer["url"]} alt="meme" class="meme"/>
         <FormWrapper>
             <form>
-                    {multipleChoice}
-                    <StyledButton type="submit" onClick={handleOnClickSubmit}>Next</StyledButton>
+                {multipleChoice}
+                <StyledButton type="submit" onClick={handleOnClickSubmit}>Next</StyledButton>
             </form>
-            {newMultipleChoice}
+            
         </FormWrapper>
         </TestWrapper>
     )

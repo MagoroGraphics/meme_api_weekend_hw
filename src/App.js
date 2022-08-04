@@ -23,18 +23,19 @@ const StyledLink = styled(Link)`
 function App() {
   const [memes, setMemesList] = useState([]);
   const [userName, setUserName] = useState("");
-  const [currentFiveMemes, setCurrentFiveMemes] = useState([]);
+  // const [currentFiveMemes, setCurrentFiveMemes] = useState([]);
   const [fullQuiz, setFullQuiz] = useState([]);
   const [currentCorrectAnswer, setCurrentCorrectAnswer] = useState({});
   const [questionNum, setQuestionNum] = useState(0);
+  const [allCorrectAnswers, setAllCorrectAnswers] = useState([]);
 
   useEffect(() => {
     loadMemes();
   }, []);
 
   useEffect(() => {
-    getFiveRandomMemes();
-    getFullQuiz();
+    // getFiveRandomMemes();
+    getFullQuiz()
   }, [memes]);
 
   const loadMemes = () => {
@@ -46,15 +47,15 @@ function App() {
       .catch((error) => console.error);
   };
 
-  const getFiveRandomMemes = () => {
-    let randomMemeList = [];
+  // const getFiveRandomMemes = () => {
+  //   let randomMemeList = [];
 
-    for (let i = 0; i < 5; i++) {
-      let randomIndex = Math.floor(Math.random() * memes.length);
-      randomMemeList.push(memes[randomIndex]);
-    }
-    setCurrentFiveMemes(randomMemeList);
-  };
+  //   for (let i = 0; i < 5; i++) {
+  //     let randomIndex = Math.floor(Math.random() * memes.length);
+  //     randomMemeList.push(memes[randomIndex]);
+  //   }
+  //   setCurrentFiveMemes(randomMemeList);
+  // };
 
   const getFullQuiz = () => {
     let allQuestions = [];
@@ -68,14 +69,35 @@ function App() {
       allQuestions.push(randomMemeList);
       setFullQuiz(allQuestions);
     }
-
   };
 
   const getCurrentCorrectAnswer = () => {
     let correctAnswer = {};
-    let randomIndex = Math.floor(Math.random() * currentFiveMemes.length);
-    correctAnswer = currentFiveMemes[randomIndex];
+
+    let randomIndex = Math.floor(Math.random() * fullQuiz[questionNum].length);
+    console.log(
+      "This is the fullQuiz content: ",
+      fullQuiz[questionNum],
+      "by index number: ",
+      questionNum
+    );
+    correctAnswer = fullQuiz[questionNum][randomIndex];
+    console.log({ correctAnswer });
     setCurrentCorrectAnswer(correctAnswer);
+  };
+
+  const getAllCorrectAnswers = () => {
+    let answers = []
+    fullQuiz.forEach((question) => {
+      let correctAnswer = {};
+      
+      let randomIndex = Math.floor(
+        Math.random() * question.length
+      );
+      correctAnswer = question[randomIndex];
+      answers.push(correctAnswer);
+    });
+    setAllCorrectAnswers(answers)
   };
 
   return (
@@ -97,13 +119,14 @@ function App() {
                   memes={memes}
                   userName={userName}
                   setUserName={setUserName}
-                  currentFiveMemes={currentFiveMemes}
+                  // currentFiveMemes={currentFiveMemes}
                   currentCorrectAnswer={currentCorrectAnswer}
                   getCurrentCorrectAnswer={getCurrentCorrectAnswer}
-                  getFiveRandomMemes={getFiveRandomMemes}
-                  fullQuiz = {fullQuiz}
-                  questionNum = {questionNum}
-                  setQuestionNum = {setQuestionNum}
+                  // getFiveRandomMemes={getFiveRandomMemes}
+                  fullQuiz={fullQuiz}
+                  questionNum={questionNum}
+                  setQuestionNum={setQuestionNum}
+                  getAllCorrectAnswers = {getAllCorrectAnswers}
                 />
               ) : null
             }

@@ -1,12 +1,19 @@
 import React from "react";
 
-const EndScreen = () => {
+const EndScreen = ({
+    setQuestionNum, 
+    setQuizzState
+}) => {
 
+    const handleOnClick = () => {
+        setQuestionNum(0)
+        setQuizzState("Start Screen")
+    }
 
     return(
         <>
             <h1>Congrats! Your Score is: </h1>
-            <button>Restart Test</button>
+            <button onClick={handleOnClick} >Restart Test</button>
         </>
     )
         
