@@ -2,17 +2,21 @@ import React from "react";
 
 const EndScreen = ({
     setQuestionNum, 
-    setQuizzState
+    setQuizzState,
+    score,
+    setScore,
+    userName
 }) => {
 
     const handleOnClick = () => {
         setQuestionNum(0)
         setQuizzState("Start Screen")
+        setScore(0)
     }
 
     return(
         <>
-            <h1>Congrats! Your Score is: </h1>
+            <h1>Congrats {userName}! Your Score is: {score} / 100 </h1>
             <button onClick={handleOnClick} >Restart Test</button>
         </>
     )

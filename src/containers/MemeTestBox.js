@@ -16,11 +16,12 @@ const MemeTestBox = ({
     questionNum,
     setQuestionNum,
     getAllCorrectAnswers,
-    allCorrectAnswers
+    allCorrectAnswers,
+    score,
+    setScore,
     
 }) => {
 
-    const [score, setScore] = useState(0)
     const [userChoice, setUserChoice] = useState('')
     const [multiChoiceAnswers, setMultiChoiceAnswers] = useState([])
     const [usersubmission, setUserSubmission] = useState("")
@@ -62,11 +63,16 @@ const MemeTestBox = ({
                 setQuestionNum = {setQuestionNum}
                 getAllCorrectAnswers = {getAllCorrectAnswers}
                 allCorrectAnswers = {allCorrectAnswers}
+                score = {score}
+                setScore = {setScore}
                 />}
 
                 {quizzState === "End Screen" && <EndScreen
                 setQuestionNum = {setQuestionNum}
                 setQuizzState = {setQuizzState}
+                score = {score}
+                setScore = {setScore}
+                userName = {userName}
                 />}
 
             </section>

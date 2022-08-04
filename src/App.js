@@ -27,6 +27,7 @@ function App() {
   const [currentCorrectAnswer, setCurrentCorrectAnswer] = useState({});
   const [questionNum, setQuestionNum] = useState(0);
   const [allCorrectAnswers, setAllCorrectAnswers] = useState([]);
+  const [score, setScore] = useState(0)
 
   useEffect(() => {
     loadMemes();
@@ -107,15 +108,15 @@ function App() {
                   memes={memes}
                   userName={userName}
                   setUserName={setUserName}
-                  // currentFiveMemes={currentFiveMemes}
                   currentCorrectAnswer={currentCorrectAnswer}
                   getCurrentCorrectAnswer={getCurrentCorrectAnswer}
-                  // getFiveRandomMemes={getFiveRandomMemes}
                   fullQuiz={fullQuiz}
                   questionNum={questionNum}
                   setQuestionNum={setQuestionNum}
                   getAllCorrectAnswers = {getAllCorrectAnswers}
                   allCorrectAnswers= {allCorrectAnswers}
+                  score = {score}
+                  setScore = {setScore}
                 />
               ) : null
             }
